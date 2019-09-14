@@ -4,7 +4,7 @@ local backtothefuture = false
 local effects_f = {}
 local effects_r = {}
 
-function SetDelorianCoords(veh, speed)
+function SetDeloreanCoords(veh, speed)
     SetEntityCoords(veh, tpcoords.x, tpcoords.y, tpcoords.z, 0.0, 0.0, 0.0, false)
     SetEntityHeading(veh, tpcoords.h)
     SetGameplayCamRelativeHeading(tpcoords.cam)
@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
                     local wheelf = GetWorldPositionOfEntityBone(veh, GetEntityBoneIndexByName(veh, "wheel_rf"))
                     local wheelr = GetWorldPositionOfEntityBone(veh, GetEntityBoneIndexByName(veh, "wheel_lf"))
 
-                    if (GetEntitySpeed(veh)*2.23694 >= 80.0 and not backtothefuture) then
+                    if (GetEntitySpeed(veh)*2.23694 >= 88.0 and not backtothefuture) then
                         timer = timer + 1
                         if effects_f[i] then
                             StopParticleFxLooped(effects_f[i])
@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
                             StartScreenEffect("RaceTurbo", 0, true)
                             if (timer > 250) then
                                 backtothefuture = true
-                                SetDelorianCoords(veh, GetEntitySpeed(veh))
+                                SetDeloreanCoords(veh, GetEntitySpeed(veh))
                                 timer = 0
                             end
                         else
