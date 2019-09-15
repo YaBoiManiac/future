@@ -115,11 +115,16 @@ Citizen.CreateThread(function()
         	drawRct(0.025, 0.402, 0.01, (0.245/1000)*cooldown, 150, 0, 0, 150)
 
         	if (not boosting and time_charge >= 500) then
-            	draw2dText("~r~[PRESS ENTER]", { 0.47, 0.8 } )
-            	if (IsControlJustPressed(1, 191)) then
-            		boosting = true
-            		StartBoost(veh)
-            	end
+        		local pos = GetBlipInfoIdCoord(GetFirstBlipInfoId(8))
+        		if (pos.x ~= 0.0) then
+	            	draw2dText("~g~[PRESS ENTER]", { 0.47, 0.8 } )
+	            	if (IsControlJustPressed(1, 191)) then
+	            		boosting = true
+	            		StartBoost(veh)
+	            	end
+	            else
+	            	draw2dText("~r~[INPUT DATE]", { 0.47, 0.8 } )
+	            end
             end
 
             if (GetEntitySpeed(veh)*2.23694 >= 88.0 and cooldown <= 0) then
